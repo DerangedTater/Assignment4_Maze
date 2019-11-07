@@ -28,6 +28,11 @@ public class Cell : MonoBehaviour
         
     }
 
+    public bool canMoveInDirection(Direction dir)
+    {
+        
+    }
+
     public void RemoveWall(Direction dir)
     {
         GameObject wallToRemove = Walls[(int)dir];

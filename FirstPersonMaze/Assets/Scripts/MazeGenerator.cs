@@ -30,6 +30,8 @@ public class MazeGenerator : MonoBehaviour
     Cell nextCell;
 
     private List<Cell> Cells = new List<Cell>();
+
+    public static MazeGenerator Instance = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,15 @@ public class MazeGenerator : MonoBehaviour
         CreateCells();
         GenerateMazeRecursive();
 
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     // Update is called once per frame
@@ -45,6 +56,8 @@ public class MazeGenerator : MonoBehaviour
     {
         
     }
+
+
 
     private void GenerateMazeRecursive()
     {
@@ -136,6 +149,38 @@ public class MazeGenerator : MonoBehaviour
             return null;
         }
         return Cells[CellIndex];
+    }
+
+    public Cell GetRandomAdjacentCellTo(Cell cell)
+    {
+        Cell adjacentCell = null;
+        int curColumn = cell.cellColumn;
+        int curRow = cell.cellRow;
+        int adjColumn;
+        int adjRow;
+
+        Direction adjDir = (Direction)(Random.Range(0, 4));
+        while(adjacentCell == null)
+        {
+            
+            if(cell.canMoveInDirection(adjDir))
+            {
+                switch(adjDir)
+                {
+                    case Direction.North:
+                        adjRow++;
+                        break;
+                    case Direction.East:
+                        adjColumn++;
+                        break;
+                    case Direction.West:
+                        adjColumn--;
+                        break;
+                    case Direction.South:
+                        adjRow--;
+                }
+            }
+        }
     }
 
     public void CreateCells()

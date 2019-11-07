@@ -156,8 +156,8 @@ public class MazeGenerator : MonoBehaviour
         Cell adjacentCell = null;
         int curColumn = cell.cellColumn;
         int curRow = cell.cellRow;
-        int adjColumn;
-        int adjRow;
+        int adjColumn = cell.cellColumn;
+        int adjRow = cell.cellRow;
 
         Direction adjDir = (Direction)(Random.Range(0, 4));
         while(adjacentCell == null)
@@ -178,9 +178,13 @@ public class MazeGenerator : MonoBehaviour
                         break;
                     case Direction.South:
                         adjRow--;
+                        break;
                 }
+
+                adjacentCell = GetCellAt(adjColumn, adjRow);
             }
         }
+        return adjacentCell;
     }
 
     public void CreateCells()

@@ -22,7 +22,7 @@ public class Shooter : MonoBehaviour
         if(destCell == null)
         {
             // Decide on the next cell to move to
-            destCell = MazeGenerator.Instance.GetRandomAdjacentCellTo(currentCell);
+/*            destCell = MazeGenerator.Instance.GetRandomAdjacentCellTo(currentCell);*/
         }
         else
         {

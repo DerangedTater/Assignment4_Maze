@@ -16,8 +16,8 @@ public class Cell : MonoBehaviour
     public GameObject[] Walls = new GameObject[] { null, null, null, null };
     public bool[] WallsRemoved = new bool[] { false, false, false, false };
 
-    private int cellColumn;
-    private int cellRow;
+    public int cellColumn;
+    public int cellRow;
     private float cellSizeX;
     private float cellSizeZ;
 
@@ -30,6 +30,30 @@ public class Cell : MonoBehaviour
 
     public bool canMoveInDirection(Direction dir)
     {
+        Cell nextCell = null;
+        int nextColumn = cellColumn;
+        int nextRow = cellRow;
+
+        switch (dir)
+        {
+            case Direction.North:
+                nextRow++;
+                break;
+            case Direction.East:
+                nextColumn++;
+                break;
+            case Direction.West:
+                nextColumn--;
+                break;
+            case Direction.South:
+                nextRow--;
+                break;
+        }
+
+        nextCell = MazeGenerator.Instance.GetCellAt(nextColumn, nextRow);
+
+        return nextCell != null;
+
         
     }
 

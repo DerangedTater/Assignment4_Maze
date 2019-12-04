@@ -8,12 +8,21 @@ public class Shooter : MonoBehaviour
     public float TurnSpeed;
     public float ShotDelay;
 
+    private float shotTimer = 0.0f;
+
     private Cell currentCell;
     private Cell destCell;
+
+    public GameObject shooterBullet;
+    public GameObject gunEnd;
+
+    private MazeGenerator MazeManager;
+
+    private ShooterGenerator myGenerator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //SetStartingCell();
     }
 
     // Update is called once per frame
@@ -22,7 +31,7 @@ public class Shooter : MonoBehaviour
         if(destCell == null)
         {
             // Decide on the next cell to move to
-/*            destCell = MazeGenerator.Instance.GetRandomAdjacentCellTo(currentCell);*/
+            destCell = MazeGenerator.Instance.GetRandomAdjacentCellTo(currentCell, false);
         }
         else
         {
@@ -34,6 +43,20 @@ public class Shooter : MonoBehaviour
 
             // Move toward the destination cell
             
+        }
+        FireProjectile();
+    }
+
+    private void FireProjectile()
+    {
+        shotTimer += Time.deltaTime;
+
+        if(shotTimer >= ShotDelay)
+        {
+            GameObject bullet = Instantiate(shooterBullet);
+            bullet.transform.rotation = this.gameObject.transform.rotation;
+            bullet.transform.position = gunEnd.transform.position;
+            shotTimer = 0.0f;
         }
     }
 

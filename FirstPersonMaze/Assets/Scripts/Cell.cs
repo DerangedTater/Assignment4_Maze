@@ -15,9 +15,12 @@ public class Cell : MonoBehaviour
     public float WallHeight;
     public GameObject[] Walls = new GameObject[] { null, null, null, null };
     public bool[] WallsRemoved = new bool[] { false, false, false, false };
+    public GameObject Fog;
+    public GameObject Trigger;
 
     public int cellColumn;
     public int cellRow;
+    public float fogHeight;
     private float cellSizeX;
     private float cellSizeZ;
 
@@ -34,27 +37,61 @@ public class Cell : MonoBehaviour
         int nextColumn = cellColumn;
         int nextRow = cellRow;
 
-        switch (dir)
+
+        if (!Walls[(int)dir].active)
         {
-            case Direction.North:
-                nextRow++;
-                break;
-            case Direction.East:
-                nextColumn++;
-                break;
-            case Direction.West:
-                nextColumn--;
-                break;
-            case Direction.South:
-                nextRow--;
-                break;
+            switch (dir)
+            {
+                case Direction.North:
+                    nextRow++;
+                    break;
+                case Direction.East:
+                    nextColumn++;
+                    break;
+                case Direction.West:
+                    nextColumn--;
+                    break;
+                case Direction.South:
+                    nextRow--;
+                    break;
+            }
+            nextCell = MazeGenerator.Instance.GetCellAt(nextColumn, nextRow);
+
+            return nextCell != null;
         }
 
-        nextCell = MazeGenerator.Instance.GetCellAt(nextColumn, nextRow);
+        else
+        {
+            return nextCell = null;
+        }      
+    }
 
-        return nextCell != null;
+    public bool canMoveInDirectionGhost(Direction dir)
+    {
+        Cell nextCell = null;
+        int nextColumn = cellColumn;
+        int nextRow = cellRow;
 
-        
+
+
+            switch (dir)
+            {
+                case Direction.North:
+                    nextRow++;
+                    break;
+                case Direction.East:
+                    nextColumn++;
+                    break;
+                case Direction.West:
+                    nextColumn--;
+                    break;
+                case Direction.South:
+                    nextRow--;
+                    break;
+            }
+            nextCell = MazeGenerator.Instance.GetCellAt(nextColumn, nextRow);
+
+            return nextCell != null;
     }
 
     public void RemoveWall(Direction dir)
@@ -79,6 +116,9 @@ public class Cell : MonoBehaviour
         Walls[(int)Direction.South].transform.localScale = new Vector3(cellSizeX, WallHeight, 1.0f);
         Walls[(int)Direction.West].transform.localScale = new Vector3(cellSizeZ, WallHeight, 1.0f);
 
+        Fog.transform.localScale = new Vector3(cellSizeX, 1.0f, cellSizeZ);
+        Trigger.transform.localScale = new Vector3(cellSizeX, 6.0f, cellSizeZ);
+
         float wallDistX = cellSizeX * 0.5f + 0.5f;
         float wallDistZ = cellSizeZ * 0.5f + 0.5f;
 
@@ -86,11 +126,14 @@ public class Cell : MonoBehaviour
         Walls[(int)Direction.East].transform.localPosition = new Vector3(wallDistX, 0.0f, 0.0f);
         Walls[(int)Direction.South].transform.localPosition = new Vector3(0.0f, 0.0f, -wallDistZ);
         Walls[(int)Direction.West].transform.localPosition = new Vector3(-wallDistX, 0.0f, 0.0f);
+
+        Fog.transform.localPosition = new Vector3(0, fogHeight, 0);
+        Trigger.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

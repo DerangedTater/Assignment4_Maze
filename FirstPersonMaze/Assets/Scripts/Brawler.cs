@@ -7,10 +7,15 @@ public class Brawler : MonoBehaviour
     public float MoveSpeed;
     public float TurnSpeed;
 
+    public GameObject RayCastSource;
+    
+    public float scanRange;
+
     private Cell currentCell;
     private Cell destCell;
 
     private MazeGenerator MazeManager;
+    public GameObject Player;
 
     private BrawlerGenerator myGenerator;
     // Start is called before the first frame update
@@ -22,6 +27,9 @@ public class Brawler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject playerObject = MazeGenerator.Instance.Player;
+        bool test = CanSeeTarget(playerObject.transform);
+
         if (destCell == null)
         {
             // Decide on the next cell to move to
@@ -38,6 +46,7 @@ public class Brawler : MonoBehaviour
             // Move toward the destination cell
 
         }
+
     }
 
     private bool IsFacingDestination()
@@ -83,10 +92,50 @@ public class Brawler : MonoBehaviour
             {
                 transform.position += moveVec;
             }
+        }
+    }
+
+    private bool CanSeeTarget(Transform targetTrans)
+    {
+        Vector3 RayCastStartPos = RayCastSource.transform.position;
+        RaycastHit hit;
+        Vector3 RayCastDir = targetTrans.position - RayCastStartPos;
+        RayCastDir.y = 0.0f;
+        RayCastDir.Normalize();
+        int layerMask = LayerMask.GetMask("Ignore Raycast");
+        layerMask = ~layerMask;
+
+        Debug.DrawRay(RayCastStartPos, RayCastDir * scanRange, Color.yellow);
+
+        if (Physics.Raycast(RayCastStartPos, RayCastDir * scanRange, out hit, scanRange, layerMask))
+        {
+            //Debug.Log("Raycast Hit: " + hit.transform.gameObject.GetComponent<>)
+
+            Player player = hit.transform.gameObject.GetComponentInParent<Player>();
+            if(player != null)
+            {
+                Debug.DrawRay(RayCastStartPos, RayCastDir * scanRange, Color.yellow);
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
 
         }
 
+        else
+        {
+            return false;
+        }
+    }
 
+    private void ChasePlayer()
+    {
+        GameObject playerObj = MazeGenerator.Instance.Player;
+
+        
     }
 
     public void SetStartingCell(Cell startCell)

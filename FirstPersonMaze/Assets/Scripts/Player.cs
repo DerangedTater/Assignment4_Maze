@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public float MovementSpeed;
     public float TurningSpeed;
     public float MaximumPitch;
-    public float GravityForce;
     public Camera PlayerCamera;
 
     // Start is called before the first frame update
@@ -20,14 +19,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = Vector3.zero;
-        move.y = -GravityForce;
-
         //Forward/Back/Left/Right Movement
         float frameMovementSpeed = Time.deltaTime * MovementSpeed;
         float moveX = Input.GetAxis("Horizontal") * frameMovementSpeed;
         float moveZ = Input.GetAxis("Vertical") * frameMovementSpeed;
-        move = new Vector3(moveX, 0.0f, moveZ);
+        Vector3 move = new Vector3(moveX, 0.0f, moveZ);
         move = Vector3.ClampMagnitude(move, frameMovementSpeed);
         move = this.transform.TransformVector(move);
         PlayerController.Move(move);

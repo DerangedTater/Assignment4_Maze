@@ -496,7 +496,6 @@ MonoBehaviour:
   MovementSpeed: 10
   TurningSpeed: 20
   MaximumPitch: 45
-  GravityForce: 0
   PlayerCamera: {fileID: 534669904}
 --- !u!143 &668235455
 CharacterController:

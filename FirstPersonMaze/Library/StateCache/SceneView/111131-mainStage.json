@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":-9.141100883483887,"y":18.82845687866211,"z":-7.142326354980469},"rotation":{"x":-0.5975202918052673,"y":0.0530255027115345,"z":-0.03964557871222496,"w":-0.799115777015686},"size":39.317893981933597,"orthographic":false}
 =======
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":0.4588555693626404,"y":48.59000015258789,"z":0.0},"rotation":{"x":0.1712682545185089,"y":0.7666952013969421,"z":-0.5750695466995239,"w":0.22834354639053346},"size":7.086468696594238,"orthographic":false}
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":8.110085487365723,"y":22.209848403930665,"z":1.2789506912231446},"rotation":{"x":0.1712682545185089,"y":0.7666952013969421,"z":-0.5750695466995239,"w":0.22834354639053346},"size":4.90684175491333,"orthographic":false}
+>>>>>>> parent of 7da78f8... Alex- updated raycast

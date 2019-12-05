@@ -15,8 +15,13 @@ MonoBehaviour:
   m_PixelRect:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 882
     y: 285
+=======
+    x: 803
+    y: 300
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     width: 1536
     height: 781
 =======
@@ -28,7 +33,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -55,10 +60,14 @@ MonoBehaviour:
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 27
 =======
   controlID: 91
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+  controlID: 10
+>>>>>>> parent of 7da78f8... Alex- updated raycast
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -229,7 +238,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 28
+  controlID: 64
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -254,7 +263,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 29
+  controlID: 65
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -331,8 +340,13 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 882
     y: 757
+=======
+    x: 803
+    y: 772
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     width: 1126
     height: 269
 =======
@@ -355,6 +369,7 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -367,6 +382,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Textures
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+    - Assets/Prefabs
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Prefabs
+>>>>>>> parent of 7da78f8... Alex- updated raycast
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\student\Documents\GitHub\Assignment4_Maze\FirstPersonMaze
   m_LockTracker:
@@ -374,6 +396,7 @@ MonoBehaviour:
   m_FolderTreeState:
 <<<<<<< HEAD
     scrollPos: {x: 0, y: 8}
+<<<<<<< HEAD
     m_SelectedIDs: d40a0000
     m_LastClickedID: 2772
     m_ExpandedIDs: 000000008e090000080b000000ca9a3b
@@ -383,6 +406,11 @@ MonoBehaviour:
     m_LastClickedID: 12766
     m_ExpandedIDs: 000000005c3000008c31000000ca9a3b
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+    m_SelectedIDs: b8090000
+    m_LastClickedID: 2488
+    m_ExpandedIDs: 000000008a090000020b000000ca9a3b
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,10 +439,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000008e090000080b0000
 =======
     m_ExpandedIDs: 000000005c3000008c310000
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+    m_ExpandedIDs: 000000008a090000020b0000
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -491,8 +523,13 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 2010
     y: 315
+=======
+    x: 1931
+    y: 330
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     width: 406
     height: 711
 =======
@@ -533,8 +570,13 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 882
     y: 315
+=======
+    x: 803
+    y: 330
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     width: 283
     height: 422
 =======
@@ -547,6 +589,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
       m_SelectedIDs: 140c0000
       m_LastClickedID: 3092
@@ -564,6 +607,15 @@ MonoBehaviour:
         m_Name: 
         m_OriginalName: 
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+      m_SelectedIDs: 2c0c0000
+      m_LastClickedID: 3116
+      m_ExpandedIDs: 8c22fbff9222fbffce22fbffd422fbff9e6efbffd259fcff0cdefdffc48effffda93ffffd4fbffff
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: Shooter(Clone)
+        m_OriginalName: Shooter(Clone)
+>>>>>>> parent of 7da78f8... Alex- updated raycast
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -571,10 +623,14 @@ MonoBehaviour:
           width: 0
           height: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
         m_UserData: 3142
 =======
         m_UserData: 0
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+        m_UserData: -299362
+>>>>>>> parent of 7da78f8... Alex- updated raycast
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 11
@@ -608,8 +664,13 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1167
     y: 315
+=======
+    x: 1088
+    y: 330
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     width: 839
     height: 422
 =======
@@ -626,6 +687,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -9.141101, y: 18.828457, z: -7.1423264}
     speed: 2
     m_Value: {x: -9.141101, y: 18.828457, z: -7.1423264}
@@ -634,6 +696,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.45885557, y: 48.59, z: 0}
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+    m_Target: {x: 8.1100855, y: 22.209848, z: 1.2789507}
+    speed: 2
+    m_Value: {x: 8.1100855, y: 22.209848, z: 1.2789507}
+>>>>>>> parent of 7da78f8... Alex- updated raycast
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -662,13 +729,18 @@ MonoBehaviour:
       m_Value: 0
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.5975203, y: 0.053025503, z: -0.03964558, w: -0.7991158}
 =======
     m_Target: {x: 0.17126825, y: 0.7666952, z: -0.57506955, w: 0.22834355}
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+    m_Target: {x: 0.17126824, y: 0.76669514, z: -0.5750695, w: 0.22834353}
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     speed: 2
-    m_Value: {x: -0.5975203, y: 0.053025503, z: -0.03964558, w: -0.7991158}
+    m_Value: {x: 0.17126825, y: 0.7666952, z: -0.57506955, w: 0.22834355}
   m_Size:
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: 39.317894
     speed: 2
@@ -678,6 +750,11 @@ MonoBehaviour:
     speed: 2
     m_Value: 7.0864687
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
+=======
+    m_Target: 4.9068418
+    speed: 2
+    m_Value: 4.9068418
+>>>>>>> parent of 7da78f8... Alex- updated raycast
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -711,8 +788,13 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1167
     y: 315
+=======
+    x: 1088
+    y: 330
+>>>>>>> parent of 7da78f8... Alex- updated raycast
     width: 839
     height: 422
 =======
@@ -797,8 +879,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 882
-    y: 757
+    x: 803
+    y: 772
     width: 1126
     height: 269
   m_PersistentViewDataDictionary: {fileID: 0}

@@ -109,11 +109,6 @@ public class Shooter : MonoBehaviour
 
     }
 
-    private void AttackPlayer()
-    {
-
-    }
-
     public void SetStartingCell(Cell startCell)
     {
         currentCell = startCell;

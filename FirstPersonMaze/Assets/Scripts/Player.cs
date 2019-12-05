@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float MaximumPitch;
     public float GravityForce;
     public Camera PlayerCamera;
+    public GameObject playerBullet;
+    public GameObject bulletSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour
         Vector3 playerRot = transform.rotation.eulerAngles;
         playerRot.y += mouseX;
         transform.rotation = Quaternion.Euler(playerRot);
-
+        
         // Mouse Look (Camera)
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * TurningSpeed;
         Vector3 cameraRot = PlayerCamera.transform.rotation.eulerAngles;
@@ -52,5 +54,16 @@ public class Player : MonoBehaviour
         cameraRot.x -= mouseY;
         cameraRot.x = Mathf.Clamp(cameraRot.x, -MaximumPitch, MaximumPitch);
         PlayerCamera.transform.rotation = Quaternion.Euler(cameraRot);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject bullet = Instantiate(playerBullet);
+        bullet.transform.position = bulletSpawner.transform.position;
     }
 }

@@ -30,23 +30,34 @@ public class Brawler : MonoBehaviour
         GameObject playerObject = MazeGenerator.Instance.Player;
         bool test = CanSeeTarget(playerObject.transform);
 
-        if (destCell == null)
+        if (!CanSeeTarget(playerObject.transform))
         {
-            // Decide on the next cell to move to
-            destCell = MazeGenerator.Instance.GetRandomAdjacentCellTo(currentCell, false);
+            if (destCell == null)
+            {
+                // Decide on the next cell to move to
+                destCell = MazeGenerator.Instance.GetRandomAdjacentCellTo(currentCell, false);
+            }
+            else
+            {
+                if (!IsFacingDestination())
+                {
+                    TurnTowardDestinationCell();
+                }
+                MoveToDestinationCell();
+
+                // Move toward the destination cell
+
+            }
         }
         else
         {
-            if (!IsFacingDestination())
+            if(!IsFacingPlayer())
             {
-                TurnTowardDestinationCell();
+                TurnTowardsPlayer();
             }
-            MoveToDestinationCell();
 
-            // Move toward the destination cell
-
+            ChasePlayer();
         }
-
     }
 
     private bool IsFacingDestination()
@@ -60,10 +71,31 @@ public class Brawler : MonoBehaviour
         return (degreesAngle == 0.0f);
     }
 
+    private bool IsFacingPlayer()
+    {
+        GameObject playerObject = MazeGenerator.Instance.Player;
+        Vector3 facing = transform.forward;
+        Vector3 toPlayer = playerObject.transform.position - this.transform.position;
+        float dotProduct = Vector3.Dot(facing, toPlayer);
+        float radianAngle = Mathf.Acos(dotProduct);
+        float degreesAngle = Mathf.Rad2Deg * radianAngle;
+
+        return (degreesAngle == 0.0f);
+    }
+
     private void TurnTowardDestinationCell()
     {
         Vector3 facing = transform.forward;
         Vector3 toTarget = destCell.transform.position - this.transform.position;
+        Vector3 newFacing = Vector3.RotateTowards(facing, toTarget, TurnSpeed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newFacing);
+    }
+
+    private void TurnTowardsPlayer()
+    {
+        GameObject playerObject = MazeGenerator.Instance.Player;
+        Vector3 facing = transform.forward;
+        Vector3 toTarget = playerObject.transform.position - this.transform.position;
         Vector3 newFacing = Vector3.RotateTowards(facing, toTarget, TurnSpeed * Time.deltaTime, 0.0f);
         transform.rotation = Quaternion.LookRotation(newFacing);
     }
@@ -105,21 +137,20 @@ public class Brawler : MonoBehaviour
         int layerMask = LayerMask.GetMask("Ignore Raycast");
         layerMask = ~layerMask;
 
-        Debug.DrawRay(RayCastStartPos, RayCastDir * scanRange, Color.yellow);
-
-        if (Physics.Raycast(RayCastStartPos, RayCastDir * scanRange, out hit, scanRange, layerMask))
+        if (Physics.Raycast(RayCastStartPos, RayCastDir, out hit, scanRange, layerMask))
         {
-            //Debug.Log("Raycast Hit: " + hit.transform.gameObject.GetComponent<>)
+            //Debug.Log("Raycast Hit: " + hit.collider.gameObject.name);
 
             Player player = hit.transform.gameObject.GetComponentInParent<Player>();
             if(player != null)
             {
-                Debug.DrawRay(RayCastStartPos, RayCastDir * scanRange, Color.yellow);
+                Debug.DrawRay(RayCastStartPos, RayCastDir * scanRange, Color.red);
                 return true;
             }
 
             else
             {
+                Debug.DrawRay(RayCastStartPos, RayCastDir * scanRange, Color.yellow);
                 return false;
             }
 
@@ -127,6 +158,7 @@ public class Brawler : MonoBehaviour
 
         else
         {
+            Debug.DrawRay(RayCastStartPos, RayCastDir * scanRange, Color.yellow);
             return false;
         }
     }
@@ -135,7 +167,7 @@ public class Brawler : MonoBehaviour
     {
         GameObject playerObj = MazeGenerator.Instance.Player;
 
-        
+        this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, playerObj.transform.position, Time.deltaTime);
     }
 
     public void SetStartingCell(Cell startCell)

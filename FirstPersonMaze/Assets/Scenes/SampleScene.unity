@@ -621,14 +621,11 @@ MonoBehaviour:
 <<<<<<< HEAD
   TurningSpeed: 20
   MaximumPitch: 45
-<<<<<<< HEAD
   GravityForce: 0
 =======
   TurningSpeed: 250
   MaximumPitch: 60
 >>>>>>> 8a9d4448dd27d89fe5635b96497cc80ef7427a67
-=======
->>>>>>> parent of 7da78f8... Alex- updated raycast
   PlayerCamera: {fileID: 534669904}
 --- !u!143 &668235455
 CharacterController:

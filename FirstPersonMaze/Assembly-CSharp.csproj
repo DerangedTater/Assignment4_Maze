@@ -64,7 +64,6 @@
     <Compile Include="Assets\Scripts\BrawlerGenerator.cs" />
     <Compile Include="Assets\Scripts\Cell.cs" />
     <Compile Include="Assets\Scripts\FogRemover.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Ghost.cs" />
     <Compile Include="Assets\Scripts\GhostGenerator.cs" />
     <Compile Include="Assets\Scripts\MazeGenerator.cs" />

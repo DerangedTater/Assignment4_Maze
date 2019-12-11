@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 9078541276368397309}
   - component: {fileID: 8237928027871189310}
   - component: {fileID: 4846460905421715395}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShooterBullet
-  m_TagString: Untagged
+  m_TagString: ShooterBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

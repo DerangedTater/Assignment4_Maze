@@ -52,6 +52,7 @@ public class MazeGenerator : MonoBehaviour
     Cell nextCell;
 
     private bool isGameOver = false;
+    private bool didWin = false;
 
     private List<Cell> Cells = new List<Cell>();    
 
@@ -83,6 +84,10 @@ public class MazeGenerator : MonoBehaviour
         if(isGameOver)
         {
             GameOver();
+        }
+        if(didWin)
+        {
+            Win();
         }
     }
 
@@ -137,59 +142,75 @@ public class MazeGenerator : MonoBehaviour
         int GenColumn = Random.Range(0, NumCellsX);
         int GenRow = Random.Range(0, NumCellsZ);
 
+        List<Cell> generatorCells = new List<Cell>();
+        Cell checkCell = GetCellAt(GenColumn, GenRow);
+
         for (int i = 0; i < numShooterGenerators; i++)
         {
 
 
-            while (GenColumn < MinGenDistFromPlayer && GenRow < MinGenDistFromPlayer)
+            while ((GenColumn < MinGenDistFromPlayer && GenRow < MinGenDistFromPlayer) || generatorCells.Contains(checkCell))
             {
                 GenColumn = Random.Range(0, NumCellsX);
                 GenColumn = Random.Range(0, NumCellsZ);
+
+                checkCell = GetCellAt(GenColumn, GenRow);
             }
 
             Cell GeneratorCell = GetCellAt(GenColumn, GenRow);
+            generatorCells.Add(GeneratorCell);
             GameObject generatorObj = Instantiate(shooterGeneratorPrefab);
             generatorObj.transform.position = GeneratorCell.transform.position;
             ShooterGenerator generator = generatorObj.GetComponent<ShooterGenerator>();
 
             generator.Init(GeneratorCell);
+
+            GenColumn = Random.Range(0, NumCellsX);
+            GenColumn = Random.Range(0, NumCellsZ);
+            checkCell = GetCellAt(GenColumn, GenRow);
         }
-        
-        GenColumn = Random.Range(0, NumCellsX);
-        GenColumn = Random.Range(0, NumCellsZ);
 
         for (int i = 0; i < numBrawlerGenerators; i++)
         {
 
 
-            while (GenColumn < MinGenDistFromPlayer && GenRow < MinGenDistFromPlayer)
+            while ((GenColumn < MinGenDistFromPlayer && GenRow < MinGenDistFromPlayer) || generatorCells.Contains(checkCell))
             {
                 GenColumn = Random.Range(0, NumCellsX);
                 GenColumn = Random.Range(0, NumCellsZ);
+
+                checkCell = GetCellAt(GenColumn, GenRow);
             }
 
             Cell GeneratorCell = GetCellAt(GenColumn, GenRow);
+            generatorCells.Add(GeneratorCell);
             GameObject generatorObj = Instantiate(brawlerGeneratorPrefab);
             generatorObj.transform.position = GeneratorCell.transform.position;
             BrawlerGenerator generator = generatorObj.GetComponent<BrawlerGenerator>();
 
             generator.Init(GeneratorCell);
+
+            GenColumn = Random.Range(0, NumCellsX);
+            GenColumn = Random.Range(0, NumCellsZ);
+            checkCell = GetCellAt(GenColumn, GenRow);
         }
 
-        GenColumn = Random.Range(0, NumCellsX);
-        GenColumn = Random.Range(0, NumCellsZ);
+
 
         for (int i = 0; i < numGhostGenerators; i++)
         {
 
 
-            while (GenColumn < MinGenDistFromPlayer && GenRow < MinGenDistFromPlayer)
+            while ((GenColumn < MinGenDistFromPlayer && GenRow < MinGenDistFromPlayer) || generatorCells.Contains(checkCell))
             {
                 GenColumn = Random.Range(0, NumCellsX);
                 GenColumn = Random.Range(0, NumCellsZ);
+
+                checkCell = GetCellAt(GenColumn, GenRow);
             }
 
             Cell GeneratorCell = GetCellAt(GenColumn, GenRow);
+            generatorCells.Add(GeneratorCell);
             GameObject generatorObj = Instantiate(ghostGeneratorPrefab);
             generatorObj.transform.position = GeneratorCell.transform.position;
             GhostGenerator generator = generatorObj.GetComponent<GhostGenerator>();
@@ -232,6 +253,22 @@ public class MazeGenerator : MonoBehaviour
         else
         {
             isGameOver = true;
+        }
+    }
+
+    public void Win()
+    {
+        Time.timeScale = 0;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("SampleScene");
+            didWin = false;
+        }
+        else
+        {
+            didWin = true;
         }
     }
 

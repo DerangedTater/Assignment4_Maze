@@ -9,6 +9,11 @@ TagManager:
   - Shooter
   - Brawler
   - Ghost
+  - Treasure
+  - GhostGenerator
+  - BrawlerGenerator
+  - ShooterGenerator
+  - ShooterBullet
   layers:
   - Default
   - TransparentFX

@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         {
             if(hasTreasure)
             {
-                MazeGenerator.Instance.GameOver();
+                MazeGenerator.Instance.Win();
             }
         }
     }

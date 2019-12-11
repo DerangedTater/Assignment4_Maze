@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 
@@ -21,6 +22,8 @@ public class MazeGenerator : MonoBehaviour
 
     public int MinGenDistFromPlayer;
 
+    public int MinTresureDistFromPlayer;
+
     public int numBrawlerGenerators;
     public int numShooterGenerators;
     public int numGhostGenerators;
@@ -33,6 +36,8 @@ public class MazeGenerator : MonoBehaviour
     public GameObject shooterGeneratorPrefab;
     public GameObject brawlerGeneratorPrefab;
     public GameObject ghostGeneratorPrefab;
+    public GameObject treasurePrefab;
+    public GameObject flagPrefab;
 
     public GameObject Player;
 
@@ -45,6 +50,8 @@ public class MazeGenerator : MonoBehaviour
     int nextCol;
     int nextRow;
     Cell nextCell;
+
+    private bool isGameOver = false;
 
     private List<Cell> Cells = new List<Cell>();    
 
@@ -73,7 +80,10 @@ public class MazeGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isGameOver)
+        {
+            GameOver();
+        }
     }
 
     private void SpawnShooters()
@@ -114,8 +124,9 @@ public class MazeGenerator : MonoBehaviour
 
     private void OnMazeGenerationComplete()
     {
-        ResetPlayer(Player);
+        SetSpawn(Player);
         PlaceEnemyGenerator();
+        PlaceTreasure();
     }
 
     private void PlaceEnemyGenerator()
@@ -186,6 +197,42 @@ public class MazeGenerator : MonoBehaviour
             generator.Init(GeneratorCell);
         }
 
+    }
+
+    private void PlaceTreasure()
+    {
+        int MaxCols = NumCellsX;
+        int MaxRows = NumCellsZ;
+
+        int GenColumn = Random.Range(0, NumCellsX);
+        int GenRow = Random.Range(0, NumCellsZ);
+
+
+            while (GenColumn < MinTresureDistFromPlayer || GenRow < MinTresureDistFromPlayer)
+            {
+                GenColumn = Random.Range(0, NumCellsX);
+                GenColumn = Random.Range(0, NumCellsZ);
+            }
+
+            Cell TreasureCell = GetCellAt(GenColumn, GenRow);
+            GameObject treasureObj = Instantiate(treasurePrefab);
+            treasureObj.transform.position = TreasureCell.transform.position;
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("SampleScene");
+            isGameOver = false;
+        }
+        else
+        {
+            isGameOver = true;
+        }
     }
 
     private void GenerateMazeRecursive(Cell currentCell)
@@ -405,9 +452,11 @@ public class MazeGenerator : MonoBehaviour
 
     }
 
-    public void ResetPlayer(GameObject Player)
+    public void SetSpawn(GameObject Player)
     {
         Cell startingCell = GetCellAt(0, 0);
         Player.transform.position = startingCell.transform.position;
+        GameObject flagObj = Instantiate(flagPrefab);
+        flagObj.transform.position = startingCell.transform.position;
     }
 }

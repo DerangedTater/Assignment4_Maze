@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class ShooterBullet : MonoBehaviour
 {
     public Rigidbody myRigidbody;
 
@@ -27,11 +27,19 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag != "Player" && other.gameObject.tag != "Trigger")
+        if(other.gameObject.tag != "Trigger")
         {
             Destroy(this.gameObject);
             Debug.Log(other.gameObject.name);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

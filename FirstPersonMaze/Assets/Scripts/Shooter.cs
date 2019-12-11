@@ -14,6 +14,9 @@ public class Shooter : MonoBehaviour
 
     private float shotTimer = 0.0f;
 
+    public int MaxHealth;
+    private int currentHealth;
+
     private Cell currentCell;
     private Cell destCell;
 
@@ -26,6 +29,7 @@ public class Shooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = MaxHealth;
         //SetStartingCell();
     }
 
@@ -69,6 +73,11 @@ public class Shooter : MonoBehaviour
         }
     }
 
+    public void SetGenerator(ShooterGenerator Generator)
+    {
+        myGenerator = Generator;
+    }
+
     private void FireProjectile()
     {
         shotTimer += Time.deltaTime;
@@ -76,9 +85,9 @@ public class Shooter : MonoBehaviour
         if(shotTimer >= ShotDelay)
         {
             GameObject bullet = Instantiate(shooterBullet);
-            Bullet SBullet = bullet.GetComponent<Bullet>();
-            bullet.transform.rotation = this.gameObject.transform.rotation;
+            ShooterBullet SBullet = bullet.GetComponent<ShooterBullet>();
             bullet.transform.position = gunEnd.transform.position;
+            bullet.transform.rotation = gunEnd.gameObject.transform.rotation;
             shotTimer = 0.0f;
 
             SBullet.OnceInstantiated();
@@ -203,6 +212,20 @@ public class Shooter : MonoBehaviour
         moveVec *= MoveSpeed * Time.deltaTime;
 
         transform.position += moveVec;
+    }
+
+    public void SubHealth()
+    {
+        currentHealth -= 1;
+        Debug.Log(currentHealth);
+        if(currentHealth <= 0)
+        {
+            if(myGenerator != null)
+            {
+                myGenerator.RemoveEnemy(this.gameObject);
+            }
+            Destroy(this.gameObject);
+        }
     }
 
     public void SetStartingCell(Cell startCell)

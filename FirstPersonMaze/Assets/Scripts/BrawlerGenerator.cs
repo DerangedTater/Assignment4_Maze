@@ -8,6 +8,9 @@ public class BrawlerGenerator : MonoBehaviour
     public float spawnDelay;
     public int enemyCap;
 
+    public int maxHealth;
+    private int currentHealth;
+
     private Cell myCell;
     private List<GameObject> liveEnemies = new List<GameObject>();
     private float elapsedSinceSpawn = 0.0f;
@@ -15,7 +18,7 @@ public class BrawlerGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -30,11 +33,26 @@ public class BrawlerGenerator : MonoBehaviour
                 newEnemyObj.transform.position = myCell.transform.position;
                 Brawler newBrawler = newEnemyObj.GetComponent<Brawler>();
                 newBrawler.SetStartingCell(myCell);
+                newBrawler.SetGenerator(this);
 
                 liveEnemies.Add(newEnemyObj);
             }
             elapsedSinceSpawn = 0;
         }
+    }
+
+    public void SubHealth()
+    {
+        currentHealth -= 1;
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void RemoveEnemy(GameObject deadShooter)
+    {
+        liveEnemies.Remove(deadShooter);
     }
 
     public void Init(Cell cell)

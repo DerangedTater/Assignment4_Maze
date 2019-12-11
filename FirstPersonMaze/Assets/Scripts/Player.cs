@@ -14,11 +14,12 @@ public class Player : MonoBehaviour
     public GameObject bulletSpawner;
 
     private Vector3 bulletRotation;
+    private bool hasTreasure = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -66,10 +67,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Shooter" || other.gameObject.tag == "Brawler" || other.gameObject.tag == "Ghost" || other.gameObject.tag == "ShooterBullet")
+        {
+            MazeGenerator.Instance.GameOver();
+        }
+        else if(other.gameObject.tag == "Treasure")
+        {
+            hasTreasure = true;
+            Destroy(other.transform.parent.gameObject);
+        }
+        else if(other.gameObject.tag == "Finish")
+        {
+            if(hasTreasure)
+            {
+                MazeGenerator.Instance.GameOver();
+            }
+        }
+    }
+
     private void Shoot()
     {
         GameObject bullet = Instantiate(playerBullet);
-        Bullet PBullet = bullet.GetComponent<Bullet>();
+        PlayerBullet PBullet = bullet.GetComponent<PlayerBullet>();
         bullet.transform.position = bulletSpawner.transform.position;
         Vector3 playerRot = transform.eulerAngles;
         Vector3 cameraRot = PlayerCamera.transform.eulerAngles;

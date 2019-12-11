@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7932002165298052509}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8146684480023438038}
   m_Layer: 0
   m_Name: Eye2
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 210389902111667569}
   m_Layer: 0
   m_Name: Brawler
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   TurnSpeed: 5
+  maxHealth: 1
   RayCastSource: {fileID: 2155545656459011271}
   scanRange: 20
   Player: {fileID: 7769084756523984371, guid: 519c197047fc9834ab974e9f81313bee, type: 3}
@@ -253,7 +254,7 @@ GameObject:
   - component: {fileID: 5820428996272418411}
   m_Layer: 0
   m_Name: Hand1
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +345,7 @@ GameObject:
   - component: {fileID: 6175138314697795528}
   m_Layer: 0
   m_Name: Eye3
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -432,7 +433,7 @@ GameObject:
   - component: {fileID: 8467296248155148483}
   m_Layer: 0
   m_Name: VisualParent
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,7 +466,7 @@ GameObject:
   - component: {fileID: 6527888487225661495}
   m_Layer: 0
   m_Name: Hand2
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,7 +557,7 @@ GameObject:
   - component: {fileID: 3996269870174525740}
   m_Layer: 0
   m_Name: Arm1
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -648,7 +649,7 @@ GameObject:
   - component: {fileID: 5869149723850281136}
   m_Layer: 0
   m_Name: Eye1
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -739,7 +740,7 @@ GameObject:
   - component: {fileID: 1406780508047013852}
   m_Layer: 0
   m_Name: Arm2
-  m_TagString: Untagged
+  m_TagString: Brawler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

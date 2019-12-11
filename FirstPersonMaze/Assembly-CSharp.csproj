@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Brawler.cs" />
     <Compile Include="Assets\Scripts\BrawlerGenerator.cs" />
-    <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Cell.cs" />
     <Compile Include="Assets\Scripts\FogRemover.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
@@ -70,7 +69,9 @@
     <Compile Include="Assets\Scripts\GhostGenerator.cs" />
     <Compile Include="Assets\Scripts\MazeGenerator.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\Shooter.cs" />
+    <Compile Include="Assets\Scripts\ShooterBullet.cs" />
     <Compile Include="Assets\Scripts\ShooterGenerator.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/aljan/Desktop/FinalMazeProject/Assignment4_Maze/FirstPersonMaze/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

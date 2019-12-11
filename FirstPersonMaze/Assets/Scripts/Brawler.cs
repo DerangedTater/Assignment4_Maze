@@ -7,6 +7,9 @@ public class Brawler : MonoBehaviour
     public float MoveSpeed;
     public float TurnSpeed;
 
+    public int maxHealth;
+    private int currentHealth;
+
     public GameObject RayCastSource;
     
     public float scanRange;
@@ -21,6 +24,7 @@ public class Brawler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
         //SetStartingCell();
     }
 
@@ -58,6 +62,11 @@ public class Brawler : MonoBehaviour
 
             ChasePlayer();
         }
+    }
+
+    public void SetGenerator(BrawlerGenerator Generator)
+    {
+        myGenerator = Generator;
     }
 
     private bool IsFacingDestination()
@@ -175,6 +184,19 @@ public class Brawler : MonoBehaviour
         moveVec *= MoveSpeed * Time.deltaTime;
 
         transform.position += moveVec;
+    }
+
+    public void SubHealth()
+    {
+        currentHealth -= 1;
+        if (currentHealth <= 0)
+        {
+            if (myGenerator != null)
+            {
+                myGenerator.RemoveEnemy(this.gameObject);
+            }
+            Destroy(this.gameObject);
+        }
     }
 
     public void SetStartingCell(Cell startCell)

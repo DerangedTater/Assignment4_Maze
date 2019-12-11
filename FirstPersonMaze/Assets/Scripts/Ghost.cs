@@ -7,6 +7,9 @@ public class Ghost : MonoBehaviour
     public float MoveSpeed;
     public float TurnSpeed;
 
+    public int maxHealth;
+    private int currentHealth;
+
     public GameObject RayCastSource;
 
     public float scanRange;
@@ -15,10 +18,11 @@ public class Ghost : MonoBehaviour
     private Cell destCell;
 
     private MazeGenerator MazeManager;
+    private GhostGenerator myGenerator;
     // Start is called before the first frame update
     void Start()
     {
-
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -54,6 +58,11 @@ public class Ghost : MonoBehaviour
                 ChasePlayer();
             }
         }
+    }
+
+    public void SetGenerator(GhostGenerator Generator)
+    {
+        myGenerator = Generator;
     }
 
     private bool IsFacingDestination()
@@ -176,6 +185,19 @@ public class Ghost : MonoBehaviour
         }
 
 
+    }
+
+    public void SubHealth()
+    {
+        currentHealth -= 1;
+        if (currentHealth <= 0)
+        {
+            if(myGenerator != null)
+            {
+                myGenerator.RemoveEnemy(this.gameObject);
+            }
+            Destroy(this.gameObject);
+        }
     }
 
     public void SetStartingCell(Cell startCell)

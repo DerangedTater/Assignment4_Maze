@@ -167,7 +167,14 @@ public class Brawler : MonoBehaviour
     {
         GameObject playerObj = MazeGenerator.Instance.Player;
 
-        this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, playerObj.transform.position, Time.deltaTime);
+        Vector3 curPos = transform.position;
+        Vector3 destPos = playerObj.transform.position;
+        Vector3 moveVec = destPos - curPos;
+        float distanceToDestination = moveVec.magnitude;
+        moveVec.Normalize();
+        moveVec *= MoveSpeed * Time.deltaTime;
+
+        transform.position += moveVec;
     }
 
     public void SetStartingCell(Cell startCell)

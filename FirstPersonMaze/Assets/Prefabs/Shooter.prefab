@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1085266722409077149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4346430168287723629}
+  m_Layer: 0
+  m_Name: RaycastSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4346430168287723629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085266722409077149}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.99368536, y: 0.976, z: 0.908}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6611960396459428783}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2799417328594806808
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +366,7 @@ Transform:
   - {fileID: 6611960395218074061}
   - {fileID: 6611960395662573709}
   - {fileID: 3689115063813302485}
+  - {fileID: 4346430168287723629}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -353,7 +384,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   TurnSpeed: 5
-  ShotDelay: 5
-  shooterBullet: {fileID: 7531416678561760679, guid: 0df7b71994f92e54a985bad3aa305580,
+  ShotDelay: 2
+  RayCastSource: {fileID: 1085266722409077149}
+  scanRange: 20
+  shooterBullet: {fileID: 9212639387970616524, guid: 98401004c4b6a224e9575e5891d62fad,
     type: 3}
   gunEnd: {fileID: 2799417328594806808}

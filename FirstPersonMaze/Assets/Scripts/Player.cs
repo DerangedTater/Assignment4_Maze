@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public GameObject playerBullet;
     public GameObject bulletSpawner;
 
+    private Vector3 bulletRotation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,9 @@ public class Player : MonoBehaviour
         cameraRot.x = Mathf.Clamp(cameraRot.x, -MaximumPitch, MaximumPitch);
         PlayerCamera.transform.rotation = Quaternion.Euler(cameraRot);
 
+        bulletRotation.x = PlayerCamera.transform.rotation.x;
+        bulletRotation.y = transform.rotation.y;
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
@@ -64,6 +69,12 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         GameObject bullet = Instantiate(playerBullet);
+        Bullet PBullet = bullet.GetComponent<Bullet>();
         bullet.transform.position = bulletSpawner.transform.position;
+        Vector3 playerRot = transform.eulerAngles;
+        Vector3 cameraRot = PlayerCamera.transform.eulerAngles;
+
+        bullet.transform.rotation = bulletSpawner.transform.rotation; //this.gameObject.transform.rotation;
+        PBullet.OnceInstantiated();
     }
 }

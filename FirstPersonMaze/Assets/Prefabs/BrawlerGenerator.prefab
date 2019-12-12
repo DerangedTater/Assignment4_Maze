@@ -52,7 +52,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1509474380735771960, guid: a765385bbeb2cba42b5887e84b98db9a,
     type: 3}
   spawnDelay: 3
-  enemyCap: 3
+  enemyCap: 1
   maxHealth: 3
 --- !u!1 &6169516482365026655
 GameObject:

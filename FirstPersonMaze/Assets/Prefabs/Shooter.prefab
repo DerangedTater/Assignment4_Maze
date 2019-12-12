@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4346430168287723629}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RaycastSource
   m_TagString: Shooter
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085266722409077149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14, y: 2.2, z: 2.93}
+  m_LocalPosition: {x: 0.092, y: 1.9, z: 1.439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6611960396459428783}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3689115063813302485}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShooterEnd
   m_TagString: Shooter
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 6611960395202260470}
   - component: {fileID: 6611960395202260471}
   - component: {fileID: 6611960395202260468}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Shooter
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 6611960395218074062}
   - component: {fileID: 6611960395218074063}
   - component: {fileID: 6611960395218074060}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Turret
   m_TagString: Shooter
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6611960395218074034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.18, y: 2.07, z: 0}
+  m_LocalPosition: {x: -0.02, y: 2.07, z: 0}
   m_LocalScale: {x: 1, y: 1.5, z: 1.75}
   m_Children: []
   m_Father: {fileID: 6611960396459428783}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 6611960395662573710}
   - component: {fileID: 6611960395662573711}
   - component: {fileID: 6611960395662573708}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Shooter
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6611960395662573682}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.146, y: 2.1, z: 1.38}
+  m_LocalPosition: {x: -0.054000005, y: 2.1, z: 1.38}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 6611960396459428783}
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6611960396459428783}
   - component: {fileID: 8011230828980274007}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shooter
   m_TagString: Shooter
   m_Icon: {fileID: 0}
@@ -384,9 +384,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   TurnSpeed: 5
-  ShotDelay: 2
+  ShotDelay: 1
   RayCastSource: {fileID: 1085266722409077149}
-  scanRange: 20
+  scanRange: 30
   MaxHealth: 2
   shooterBullet: {fileID: 9212639387970616524, guid: 98401004c4b6a224e9575e5891d62fad,
     type: 3}

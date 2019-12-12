@@ -18,14 +18,12 @@ public class Brawler : MonoBehaviour
     private Cell destCell;
 
     private MazeGenerator MazeManager;
-    public GameObject Player;
 
     private BrawlerGenerator myGenerator;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        //SetStartingCell();
     }
 
     // Update is called once per frame
@@ -148,7 +146,12 @@ public class Brawler : MonoBehaviour
 
         if (Physics.Raycast(RayCastStartPos, RayCastDir, out hit, scanRange, layerMask))
         {
-            //Debug.Log("Raycast Hit: " + hit.collider.gameObject.name);
+            if(hit.collider.gameObject.name != "Cube" && hit.collider.gameObject.name != "Player(Clone)")
+            {
+            Debug.Log("Raycast Hit: " + hit.collider.gameObject.name);
+            }
+
+
 
             Player player = hit.transform.gameObject.GetComponentInParent<Player>();
             if(player != null)

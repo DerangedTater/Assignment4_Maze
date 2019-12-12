@@ -9,12 +9,15 @@ public class Player : MonoBehaviour
     public float TurningSpeed;
     public float MaximumPitch;
     public float GravityForce;
+    public float shotDelay;
     public Camera PlayerCamera;
     public GameObject playerBullet;
     public GameObject bulletSpawner;
 
     private Vector3 bulletRotation;
     private bool hasTreasure = false;
+    private bool GameOver = false;
+    private float shotTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -61,9 +64,12 @@ public class Player : MonoBehaviour
         bulletRotation.x = PlayerCamera.transform.rotation.x;
         bulletRotation.y = transform.rotation.y;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        shotTimer += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space) && shotTimer >= shotDelay && !GameOver)
         {
             Shoot();
+            shotTimer = 0;
         }
     }
 
@@ -71,6 +77,7 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag == "Shooter" || other.gameObject.tag == "Brawler" || other.gameObject.tag == "Ghost" || other.gameObject.tag == "ShooterBullet")
         {
+            GameOver = true;
             MazeGenerator.Instance.GameOver();
         }
         else if(other.gameObject.tag == "Treasure")
@@ -82,6 +89,7 @@ public class Player : MonoBehaviour
         {
             if(hasTreasure)
             {
+                GameOver = true;
                 MazeGenerator.Instance.Win();
             }
         }

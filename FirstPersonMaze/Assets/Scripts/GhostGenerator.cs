@@ -33,7 +33,7 @@ public class GhostGenerator : MonoBehaviour
                 newEnemyObj.transform.position = myCell.transform.position;
                 Ghost newGhost = newEnemyObj.GetComponent<Ghost>();
                 newGhost.SetStartingCell(myCell);
-
+                newGhost.SetGenerator(this);
 
                 liveEnemies.Add(newEnemyObj);
             }

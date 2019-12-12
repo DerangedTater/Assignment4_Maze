@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7045986048562022241}
   - component: {fileID: 4409448160213637412}
   - component: {fileID: 7932002165298052509}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452892564635073959}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 6626471650716598625}
   - component: {fileID: 9198871301520468253}
   - component: {fileID: 8146684480023438038}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Eye2
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681620968177563627}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8974849434490562655}
   - component: {fileID: 210389902111667569}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Brawler
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -234,12 +234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0f270719fb8904db06c55334b9f006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  MoveSpeed: 7
   TurnSpeed: 5
   maxHealth: 1
   RayCastSource: {fileID: 2155545656459011271}
-  scanRange: 20
-  Player: {fileID: 7769084756523984371, guid: 519c197047fc9834ab974e9f81313bee, type: 3}
+  scanRange: 30
 --- !u!1 &1603475915144816912
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +251,7 @@ GameObject:
   - component: {fileID: 4846386861649163069}
   - component: {fileID: 7964778332071078256}
   - component: {fileID: 5820428996272418411}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hand1
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -326,7 +325,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603475915144816912}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -343,7 +342,7 @@ GameObject:
   - component: {fileID: 5013407907820471326}
   - component: {fileID: 2175433411976634645}
   - component: {fileID: 6175138314697795528}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Eye3
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -417,7 +416,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786081027771387006}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -431,7 +430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8467296248155148483}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VisualParent
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -446,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2155545656459011271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.052, y: 2.45, z: 1.633}
+  m_LocalPosition: {x: 0.052, y: 2.45, z: 1.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8974849434490562655}
@@ -464,7 +463,7 @@ GameObject:
   - component: {fileID: 1526097918735992110}
   - component: {fileID: 188230640277051454}
   - component: {fileID: 6527888487225661495}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hand2
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -538,7 +537,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2417432062686413903}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -555,7 +554,7 @@ GameObject:
   - component: {fileID: 3516706641943443676}
   - component: {fileID: 6540826757215695044}
   - component: {fileID: 3996269870174525740}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Arm1
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -629,7 +628,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293674827797038821}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -647,7 +646,7 @@ GameObject:
   - component: {fileID: 8124498329154101911}
   - component: {fileID: 7813825401500918252}
   - component: {fileID: 5869149723850281136}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Eye1
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -721,7 +720,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5323049900865698691}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -738,7 +737,7 @@ GameObject:
   - component: {fileID: 1471450516610053753}
   - component: {fileID: 8032805785367254141}
   - component: {fileID: 1406780508047013852}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Arm2
   m_TagString: Brawler
   m_Icon: {fileID: 0}
@@ -812,7 +811,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7030527174326738897}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2

@@ -20,6 +20,15 @@ public class FogRemover : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Fog.SetActive(false);
+        Debug.Log(other.gameObject.tag);
+        if(other.gameObject.tag == "Player")
+        {
+            Fog.SetActive(false);
+        }
+        //Fog.SetActive(false);
+        if(other.tag == "Ghost")
+        {
+            Fog.SetActive(true);
+        }
     }
 }

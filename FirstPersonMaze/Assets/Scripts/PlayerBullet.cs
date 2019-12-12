@@ -7,6 +7,9 @@ public class PlayerBullet : MonoBehaviour
     public Rigidbody myRigidbody;
 
     public float bulletSpeed;
+    public float timeTillDespawn;
+
+    private float despawnTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +20,11 @@ public class PlayerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        despawnTimer += Time.deltaTime;
+        if(despawnTimer >= timeTillDespawn)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void OnceInstantiated()

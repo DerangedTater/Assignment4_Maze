@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 
@@ -21,23 +22,31 @@ public class MazeGenerator : MonoBehaviour
     public float MazeSizeZ;
 
     public int MinGenDistFromPlayer;
-
+    public int MinEnemyDistFromPlayer;
     public int MinTresureDistFromPlayer;
 
     public int numBrawlerGenerators;
     public int numShooterGenerators;
     public int numGhostGenerators;
 
+    public int numBrawlersSpawned;
+    public int numGhostSpawned;
+    public int numShootersSpawned;
+
     public int NumCellsX;
     public int NumCellsZ;
     public GameObject CellPrefab;
     public GameObject shooterPrefab;
     public GameObject ghostPrefab;
+    public GameObject brawlerPrefab;
     public GameObject shooterGeneratorPrefab;
     public GameObject brawlerGeneratorPrefab;
     public GameObject ghostGeneratorPrefab;
     public GameObject treasurePrefab;
     public GameObject flagPrefab;
+
+    public Text GameOverText;
+    public Text RestartText;
 
     public GameObject Player;
 
@@ -72,10 +81,9 @@ public class MazeGenerator : MonoBehaviour
         cellSizeZ = MazeSizeZ / NumCellsZ;
         CreateCells();
         GenerateMazeRecursive( GetCellAt(0,0) );
-        //SpawnShooters();
         //PlaceEnemyGenerator();
-        //SpawnGhosts();
-        OnMazeGenerationComplete();
+        SpawnEnemiesInMaze();
+        //OnMazeGenerationComplete();
     }
 
     // Update is called once per frame
@@ -85,9 +93,26 @@ public class MazeGenerator : MonoBehaviour
         {
             GameOver();
         }
+
         if(didWin)
         {
             Win();
+        }
+    }
+
+    private void SpawnEnemiesInMaze()
+    {
+        for(int i = 0; i < numBrawlersSpawned; i++)
+        {
+            SpawnBrawler();
+        }
+        for(int i = 0; i < numGhostSpawned; i++)
+        {
+            SpawnGhosts();
+        }
+        for(int i = 0; i < numShootersSpawned; i++)
+        {
+            SpawnShooters();
         }
     }
 
@@ -96,36 +121,54 @@ public class MazeGenerator : MonoBehaviour
         int numColumns = NumCellsX;
         int numRows = NumCellsZ;
 
-        int spawnColumn = Random.Range(0, numColumns);
-        int spawnRow = Random.Range(0, numRows);
+        int spawnColumn = Random.Range(MinEnemyDistFromPlayer, numColumns);
+        int spawnRow = Random.Range(MinEnemyDistFromPlayer, numRows);
 
-        Cell shooterSpawnCell = GetCellAt(1, 1);
+        Cell shooterSpawnCell = GetCellAt(spawnColumn, spawnRow);
         Vector3 cellpos = shooterSpawnCell.transform.position;
         Vector3 spawnPos = new Vector3(cellpos.x, 0.0f, cellpos.z);
         GameObject shooterObj = Instantiate(shooterPrefab);
-        shooterObj.transform.position = spawnPos;
+        shooterObj.transform.position = shooterSpawnCell.transform.position;
 
         Shooter newShooter = shooterObj.GetComponent<Shooter>();
         newShooter.SetStartingCell(shooterSpawnCell);
     }
 
-    /*private void SpawnGhosts()
+    private void SpawnGhosts()
     {
         int numColumns = NumCellsX;
         int numRows = NumCellsZ;
 
-        int spawnColumn = Random.Range(0, numColumns);
-        int spawnRow = Random.Range(0, numRows);
+        int spawnColumn = Random.Range(MinEnemyDistFromPlayer, numColumns);
+        int spawnRow = Random.Range(MinEnemyDistFromPlayer, numRows);
 
-        Cell ghostSpawnCell = GetCellAt(2, 2);
+        Cell ghostSpawnCell = GetCellAt(spawnColumn, spawnRow);
         Vector3 cellpos = ghostSpawnCell.transform.position;
         Vector3 spawnPos = new Vector3(cellpos.x, 0.0f, cellpos.z);
         GameObject ghostObj = Instantiate(ghostPrefab);
         ghostObj.transform.position = spawnPos;
 
-        Shooter newGhost = ghostObj.GetComponent<Shooter>();
+        Ghost newGhost = ghostObj.GetComponent<Ghost>();
         newGhost.SetStartingCell(ghostSpawnCell);
-    }*/
+    }
+
+    private void SpawnBrawler()
+    {
+        int numColumns = NumCellsX;
+        int numRows = NumCellsZ;
+
+        int spawnColumn = Random.Range(MinEnemyDistFromPlayer, numColumns);
+        int spawnRow = Random.Range(MinEnemyDistFromPlayer, numRows);
+
+        Cell brawlerSpawnCell = GetCellAt(spawnColumn, spawnRow);
+        Vector3 cellpos = brawlerSpawnCell.transform.position;
+        Vector3 spawnPos = new Vector3(cellpos.x, 0.0f, cellpos.z);
+        GameObject BrawlerObj = Instantiate(brawlerPrefab);
+        BrawlerObj.transform.position = spawnPos;
+
+        Brawler newBrawler = BrawlerObj.GetComponent<Brawler>();
+        newBrawler.SetStartingCell(brawlerSpawnCell);
+    }
 
     private void OnMazeGenerationComplete()
     {
@@ -222,32 +265,26 @@ public class MazeGenerator : MonoBehaviour
 
     private void PlaceTreasure()
     {
-        int MaxCols = NumCellsX;
-        int MaxRows = NumCellsZ;
+        int GenColumn = Random.Range(MinTresureDistFromPlayer, NumCellsX);
+        int GenRow = Random.Range(MinTresureDistFromPlayer, NumCellsZ);
 
-        int GenColumn = Random.Range(0, NumCellsX);
-        int GenRow = Random.Range(0, NumCellsZ);
-
-
-            while (GenColumn < MinTresureDistFromPlayer || GenRow < MinTresureDistFromPlayer)
-            {
-                GenColumn = Random.Range(0, NumCellsX);
-                GenColumn = Random.Range(0, NumCellsZ);
-            }
-
-            Cell TreasureCell = GetCellAt(GenColumn, GenRow);
-            GameObject treasureObj = Instantiate(treasurePrefab);
-            treasureObj.transform.position = TreasureCell.transform.position;
+        Cell TreasureCell = GetCellAt(GenColumn, GenRow);
+        GameObject treasureObj = Instantiate(treasurePrefab);
+        treasureObj.transform.position = TreasureCell.transform.position;
     }
 
     public void GameOver()
     {
         Time.timeScale = 0;
+        GameOverText.text = "You Died";
+        RestartText.text = "Press Space to Restart";
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Time.timeScale = 1;
             SceneManager.LoadScene("SampleScene");
+            GameOverText.text = "";
+            RestartText.text = "";
             isGameOver = false;
         }
         else
@@ -258,12 +295,16 @@ public class MazeGenerator : MonoBehaviour
 
     public void Win()
     {
+        GameOverText.text = "You Won";
+        RestartText.text = "Press Space to Restart";
         Time.timeScale = 0;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Time.timeScale = 1;
             SceneManager.LoadScene("SampleScene");
+            GameOverText.text = "";
+            RestartText.text = "";
             didWin = false;
         }
         else
@@ -486,7 +527,7 @@ public class MazeGenerator : MonoBehaviour
                 CellColumn++;
             }
         }
-
+        OnMazeGenerationComplete();
     }
 
     public void SetSpawn(GameObject Player)

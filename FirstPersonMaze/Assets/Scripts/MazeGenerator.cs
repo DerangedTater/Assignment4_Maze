@@ -44,6 +44,8 @@ public class MazeGenerator : MonoBehaviour
     public GameObject ghostGeneratorPrefab;
     public GameObject treasurePrefab;
     public GameObject flagPrefab;
+    public GameObject floor;
+    public Camera minimapCamera;
 
     public Text GameOverText;
     public Text RestartText;
@@ -84,6 +86,10 @@ public class MazeGenerator : MonoBehaviour
         //PlaceEnemyGenerator();
         SpawnEnemiesInMaze();
         //OnMazeGenerationComplete();
+        minimapCamera.orthographicSize = (MazeSizeX  + MazeSizeZ) / 3.5f;
+
+        Vector3 floorScale = new Vector3(MazeSizeX, 1, MazeSizeZ);
+        floor.transform.localScale = floorScale;
     }
 
     // Update is called once per frame

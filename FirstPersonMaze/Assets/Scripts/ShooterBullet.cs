@@ -27,7 +27,7 @@ public class ShooterBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag != "Trigger")
+        if(other.gameObject.tag != "Trigger" && other.gameObject.tag != "Shooter" && other.gameObject.tag != "PlayerBullet")
         {
             Destroy(this.gameObject);
             Debug.Log(other.gameObject.name);

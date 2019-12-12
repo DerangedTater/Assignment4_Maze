@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7325212f4b052694789019f3d977e4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MazeSizeX: 80
-  MazeSizeZ: 80
+  MazeSizeX: 90
+  MazeSizeZ: 90
   MinGenDistFromPlayer: 3
   MinEnemyDistFromPlayer: 3
   MinTresureDistFromPlayer: 6
@@ -221,8 +221,8 @@ MonoBehaviour:
   numBrawlersSpawned: 2
   numGhostSpawned: 2
   numShootersSpawned: 2
-  NumCellsX: 8
-  NumCellsZ: 8
+  NumCellsX: 9
+  NumCellsZ: 9
   CellPrefab: {fileID: 2155120525693713108, guid: 8a6c6440335d4b047852582a3bed302b,
     type: 3}
   shooterPrefab: {fileID: 6611960396459428780, guid: 321dedaa8d2dd4049bed3c266184d424,
@@ -241,6 +241,8 @@ MonoBehaviour:
     type: 3}
   flagPrefab: {fileID: 80549934539981877, guid: 79de134ea453e274d83613d8e26d56c8,
     type: 3}
+  floor: {fileID: 2120260583}
+  minimapCamera: {fileID: 1698085967}
   GameOverText: {fileID: 1014217875}
   RestartText: {fileID: 727707586}
   Player: {fileID: 1929546440577949368}
@@ -641,7 +643,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 53.98
+  orthographic size: 53.28
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -665,7 +667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698085965}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 114, z: 0}
+  m_LocalPosition: {x: 0, y: 90, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1179,7 +1181,7 @@ MonoBehaviour:
   MovementSpeed: 10
   TurningSpeed: 250
   MaximumPitch: 60
-  GravityForce: 1
+  GravityForce: 0
   shotDelay: 0.4
   PlayerCamera: {fileID: 1929546439639073365}
   playerBullet: {fileID: 9212639387970616524, guid: 9ee9a65700f089e409949bb0b7c1f916,
@@ -1193,7 +1195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929546440577949368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35, y: 0, z: -35}
+  m_LocalPosition: {x: -35, y: 20, z: -35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1929546439847631799}

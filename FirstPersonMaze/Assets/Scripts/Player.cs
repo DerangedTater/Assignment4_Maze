@@ -22,15 +22,14 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Cell StartCell = MazeGenerator.Instance.GetCellAt(0, 0);
+        this.gameObject.transform.position = StartCell.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = Vector3.zero;
-        move.y = -GravityForce;
-
+        Vector3 move = Vector3.zero; 
         //Forward/Back/Left/Right Movement
         float frameMovementSpeed = Time.deltaTime * MovementSpeed;
         float moveX = Input.GetAxis("Horizontal") * frameMovementSpeed;
@@ -38,6 +37,7 @@ public class Player : MonoBehaviour
         move = new Vector3(moveX, 0.0f, moveZ);
         move = Vector3.ClampMagnitude(move, frameMovementSpeed);
         move = this.transform.TransformVector(move);
+        move.y = -GravityForce;
         PlayerController.Move(move);
 
         // Yaw Rotation (Player)
@@ -70,6 +70,12 @@ public class Player : MonoBehaviour
         {
             Shoot();
             shotTimer = 0;
+        }
+
+        if(this.transform.position.y > 5)
+        {
+            Cell StartCell = MazeGenerator.Instance.GetCellAt(0, 0);
+            this.gameObject.transform.position = StartCell.transform.position;
         }
     }
 

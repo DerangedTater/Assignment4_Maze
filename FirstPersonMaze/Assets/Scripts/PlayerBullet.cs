@@ -34,7 +34,7 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag != "Trigger" && other.gameObject.tag != "Player")
+        if(other.gameObject.tag != "Trigger" && other.gameObject.tag != "Player" && other.gameObject.tag != "ShooterBullet")
         {
             switch(other.gameObject.tag)
             {
